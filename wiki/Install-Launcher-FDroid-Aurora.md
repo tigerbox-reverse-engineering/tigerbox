@@ -1,5 +1,5 @@
 # Preparation
-Please use the [UART-ADB UART Tutorial](https://github.com/tigerbox-reverse-engineering/tigerbox/wiki/Hardware-Overview) to gain ADB access.
+Please use the [UART-ADB UART tutorial](https://github.com/tigerbox-reverse-engineering/tigerbox/wiki/UART-ADB-Root) to gain ADB access.
 # Get Android Access
 ## Install F-Droid
 Download [F-Droid APK](https://f-droid.org/F-Droid.apk) and install it via adb.
