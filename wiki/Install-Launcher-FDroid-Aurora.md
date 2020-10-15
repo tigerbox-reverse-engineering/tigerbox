@@ -31,8 +31,11 @@ adb shell monkey -p '<PACKAGENAME>' -v 500
 ## Use scrcpy as remote control.
 [scrcpy](https://github.com/Genymobile/scrcpy) makes remote controlling the device very convient. Just connect your device via adb and start scrcpy.
 ## Working Software
+* [F-Droid](https://f-droid.org/F-Droid.apk) - F-Droid - Store
+* [Aurora Store](https://f-droid.org/packages/com.aurora.store/) - F-Droid - Play Store
 * [OpenLauncher](http://f-droid.org/packages/com.benny.openlauncher/) - F-Droid - Launcher
 * [NewPipe](https://f-droid.org/packages/org.schabi.newpipe/) - F-Droid - YouTube GUI
+* [VirtualSoftKeys](https://f-droid.org/packages/tw.com.daxia.virtualsoftkeys/) - F-Droid - Hardware button replacement
 ## Non-Working Software
 * YouTube - Aurora Store - Just crashes
-* 
+* Spotify - Aurora Store - Just crashes
