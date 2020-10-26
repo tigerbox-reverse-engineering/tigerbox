@@ -23,3 +23,7 @@ adb connect <tigerbox-ip>:5555
 ```
 ## via USB
 Currently unknown how to enable adb over USB
+
+## via WIFI
+May be possible with
+https://github.com/tintinweb/pub/tree/master/pocs/cve-2017-13208
