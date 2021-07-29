@@ -4,6 +4,8 @@
 Just connect your favorite 3.3V UART Interface to the marked touchpoints on the back. Reverse TX/RX and use the grey marked touchpad as GND.
 * Voltage: 3.3V
 * Baudrate: 115200 Baud
+* Parity: None
+* Flow control: XON/XOFF
 ## Serial Console - Root / SU
 Feel free here. Just type `su` and gain root. Done...
 ## FIQ Debugger
