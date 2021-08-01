@@ -9,7 +9,7 @@ adb install F-Droid.apk
 ## Install OpenLauncher
 Run F-Droid and install OpenLauncher
 ```
-adb shell monkey -p 'org.fdroid.froid' -v 5
+adb shell monkey -p 'org.fdroid.fdroid' -v 5
 ```
 If the launcher isn't in the foreground, run it directly.
 ```
