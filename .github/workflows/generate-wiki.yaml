@@ -6,16 +6,15 @@ on:
       - master
 
 jobs:
-  update-wiki:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Sync Wiki
-        uses: joeizzard/action-wiki-sync@v1
+      - uses: actions/checkout@v1
+      # Additional steps to generate documentation in "Documentation" directory
+      - name: Upload Documentation to Wiki
+        uses: SwiftDocOrg/github-wiki-publish-action@v1
         with:
-          username: SciLor
-          access_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          wiki_folder: wiki
-          commit_username: 'Wiki-Action'
-          commit_email: 'scilor@users.noreply.github.com'
-          commit_message: 'Automatically publish wiki'
+          path: "wiki"
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
