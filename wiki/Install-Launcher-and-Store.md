@@ -44,6 +44,105 @@ As the device only has a power button, you will need some kind of virtual button
 [VirtualSoftKeys](https://f-droid.org/packages/tw.com.daxia.virtualsoftkeys/)
 is a good choice, and available in _F-Droid_ store.
 
+# Supplemental Android improvements
+
+## Add more Stock Packages
+
+The Android you have is missing some stadard packages which are used by other
+Apps. Not having these stock dependencies will make many applications not work.
+
+Where to get these packages from, you ask? You extract them from a stock image,
+preferably matching the Android version and SoC which you have in your _Tigerbox_.
+And what you have, you can check in _Settings_ -> _Device info_.
+
+If your Android is 5.1.1, and chip is rk312x, then you should be able to use the
+already extracted packages:
+
+* from Google Nexus image `razor-lmy47v-factory-a58e6175`
+  [Download from Mega](https://TODO)
+
+The APK files could be installed by `adb install --user 0 <FILENAME>`, but you would
+notice that some files are refusing to install unless modded, and in general -
+these packages should be really maintained by the Android system, not by the user.
+
+To include them into the system-maintained pool, you need place them into
+`/system/priv-app` folder. Packages placed there are automatically installed
+on system reboot, as system-maintained packages.
+
+First, copy the files to a temporary folder on your device.
+
+```
+adb shell mkdir /sdcard/temp-priv-app
+adb push priv-app/* /sdcard/temp-priv-app
+```
+
+Now, log in to the device, and get _Super User_ privileges.
+
+```
+adb shell
+su
+```
+
+Then, you can move the folders into final location, and remove the temporary copy.
+
+
+```
+cp -r /sdcard/temp-priv-app/* /system/priv-app/
+rm -rf /sdcard/temp-priv-app
+```
+
+While still in the ADB shell with elevated priveleges, change attributes of the folders
+and files you copied. This is neccessary, because this version of Android
+is very strict about attributes, and will ignore the packages which do not match.
+
+```
+chmod 755 /system/priv-app/CalendarProvider
+chmod 644 /system/priv-app/CalendarProvider/*
+
+chmod 755 /system/priv-app/ContactsProvider
+chmod 644 /system/priv-app/ContactsProvider/*
+
+chmod 755 /system/priv-app/DownloadProvider
+chmod 644 /system/priv-app/DownloadProvider/*
+
+chmod 755 /system/priv-app/Launcher2
+chmod 644 /system/priv-app/Launcher2/*
+
+chmod 755 /system/priv-app/MusicFX
+chmod 644 /system/priv-app/MusicFX/*
+
+chmod 755 /system/priv-app/TelephonyProvider
+chmod 644 /system/priv-app/TelephonyProvider/*
+
+chmod 755 /system/priv-app/TeleService
+chmod 644 /system/priv-app/TeleService/*
+```
+
+You can exit the shell by typing `exit` command, twice. Or make the device restart
+and install the new packages by typing `reboot`.
+
+After the packages are installed, you can switch from _OpenLauncher_ to
+the standard Android Launcher, if you prefer. The standard one is a bit
+more responsive, but both are useable.
+
+## Install Lucid Browser
+
+Web browser will be handy. [Lucid Browser](https://f-droid.org/packages/com.powerpoint45.lucidbrowser/)
+is fast, and works with minimal amount of dependencies. The video playback
+functionality works properly, so you can use any video services through it
+when _NewPipe_ isn't enough. Available in _F-Droid_ store.
+
+## Install commonly used apps
+
+Some apps have a button which opens e-mail or calendar. Even if you don't need
+these functionalities, you probably do not want such apps to crash. So, install
+such apps from the store.
+
+For example, [SimpleEmail](https://f-droid.org/packages/org.dystopia.email/)
+fills the post for e-mail app quite well.
+
+Also, you will probably want a video player - [NewPipe](https://f-droid.org/packages/org.schabi.newpipe/).
+While not a dependency for other software, it is nice to have for this kind of device.
 
 # Additional notes
 
