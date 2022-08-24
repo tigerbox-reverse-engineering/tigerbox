@@ -179,7 +179,7 @@ make _Google Play Store_ work, you need _signature spoofing_ support on your
 Android system.
 
 Manually adding _signature spoofing_ is complicated. There are tools which allow
-to do that easily - but these are installed within [custom recovery](#custom-recovery].
+to do that easily - but these are installed within [custom recovery](#custom-recovery).
 
 In fact, if you make _custom recovery_ work, you can also install all the google
 services through _microG_ which is also installed from within _custom recovery_.
