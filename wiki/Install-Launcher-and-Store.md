@@ -58,8 +58,8 @@ And what you have, you can check in _Settings_ -> _Device info_.
 If your Android is 5.1.1, and chip is rk312x, then you should be able to use the
 already extracted packages:
 
-* selection from Google Nexus image `razor-lmy47v-factory-a58e6175`
-  [Download from Mega](https://TODO)
+* selection from Google Nexus image `razor-lmy47v-factory-a58e6175`:
+  [Download from Mega](https://mega.nz/file/oEkUCJQL#l-c5fgqDvDwxseQWLQi-MH_hNIDoPKa6FKbY4U8k4C8)
 
 The APK files could be installed by `adb install --user 0 <FILENAME>`, but you would
 notice that some files are refusing to install unless modded, and in general -
