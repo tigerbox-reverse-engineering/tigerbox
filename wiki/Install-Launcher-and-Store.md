@@ -48,7 +48,7 @@ is a good choice, and available in _F-Droid_ store.
 
 ## Add more Stock Packages
 
-The Android you have is missing some stadard packages which are used by other
+The Android you have is missing some standard packages which are used by other
 Apps. Not having these stock dependencies will make many applications not work.
 
 Where to get these packages from, you ask? You extract them from a stock image,
@@ -58,7 +58,7 @@ And what you have, you can check in _Settings_ -> _Device info_.
 If your Android is 5.1.1, and chip is rk312x, then you should be able to use the
 already extracted packages:
 
-* from Google Nexus image `razor-lmy47v-factory-a58e6175`
+* selection from Google Nexus image `razor-lmy47v-factory-a58e6175`
   [Download from Mega](https://TODO)
 
 The APK files could be installed by `adb install --user 0 <FILENAME>`, but you would
@@ -122,8 +122,11 @@ You can exit the shell by typing `exit` command, twice. Or make the device resta
 and install the new packages by typing `reboot`.
 
 After the packages are installed, you can switch from _OpenLauncher_ to
-the standard Android Launcher, if you prefer. The standard one is a bit
+the standard _Android Launcher_, if you prefer. The standard one is a bit
 more responsive, but both are useable.
+
+If the _Android Launcher_ doesn't show wallpaper, then execute in ADB shell:
+`pm enable com.android.systemui`. Effects are immediate.
 
 ## Install Lucid Browser
 
@@ -158,15 +161,15 @@ there is a `build.prop` property to enable these? More experiments needed.
 
 The Android build used was severly cut down. It is missing several provider
 packages, and other commonly used parts of Android. Some of these can be easily
-re-added (see [Supplemental Android improvements](#supplemental-android-improvements),
-others are harder. Others still require figuring out. If you see a Jave crash
+re-added (see [Supplemental Android improvements](#supplemental-android-improvements).
+Others are harder, and still require figuring out. If you see a _Java_ crash
 dump starting with:
 
 ```
 android.content.ActivityNotFoundException: No activity found to handle Intent { ... }
 ```
 
-then the issue is just that - lack of handlers. For what the handler is missing,
+then the issue is just that - lack of handlers. For what action the handler is missing,
 that is explained within curly braces of the message above.
 
 ## Missing Google services
@@ -208,9 +211,10 @@ adb shell pm list packages
 adb shell monkey -p '<PACKAGENAME>' -v 500
 ```
 
-## Use scrcpy as remote control.
+## Use scrcpy as remote control
 
-[scrcpy](https://github.com/Genymobile/scrcpy) makes remote controlling the device very convient. Just connect your device via adb and start scrcpy.
+[scrcpy](https://github.com/Genymobile/scrcpy) makes remote controlling the
+device very convient. Just connect your device via ADB and start _scrcpy_.
 
 ## Working Software
 
