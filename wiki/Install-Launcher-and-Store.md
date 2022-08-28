@@ -58,16 +58,18 @@ And what you have, you can check in _Settings_ -> _Device info_.
 If your Android is 5.1.1, and chip is rk312x, then you should be able to use the
 already extracted packages:
 
-* selection from Google Nexus image `razor-lmy47v-factory-a58e6175`:
-  [Download from Mega](https://mega.nz/file/oEkUCJQL#l-c5fgqDvDwxseQWLQi-MH_hNIDoPKa6FKbY4U8k4C8)
+* selection from Colortab Premium image `rk3126-colortabpremium-gsl1680-RTL8188-stock`:
+  [Download from Mega](https://mega.nz/file/dQFjGaIB#WPTTsyNK61UGiEeVrQoxYADfTvKFf8QySk2pZC6s-C4)
 
 The APK files could be installed by `adb install --user 0 <FILENAME>`, but you would
 notice that some files are refusing to install unless modded, and in general -
 these packages should be really maintained by the Android system, not by the user.
 
-To include them into the system-maintained pool, you need place them into
-`/system/priv-app` folder. Packages placed there are automatically installed
-on system reboot, as system-maintained packages.
+To include them into the system-maintained pool, you need place them into folders
+`/system/priv-app` and `/system/app`. Packages placed there are automatically
+installed on system reboot, as system-maintained packages.
+
+### Add Stock Packages to 'priv-app'
 
 First, copy the files to a temporary folder on your device.
 
@@ -99,9 +101,6 @@ is very strict about attributes, and will ignore the packages which do not match
 chmod 755 /system/priv-app/CalendarProvider
 chmod 644 /system/priv-app/CalendarProvider/*
 
-chmod 755 /system/priv-app/ContactsProvider
-chmod 644 /system/priv-app/ContactsProvider/*
-
 chmod 755 /system/priv-app/DownloadProvider
 chmod 644 /system/priv-app/DownloadProvider/*
 
@@ -127,6 +126,88 @@ more responsive, but both are useable.
 
 If the _Android Launcher_ doesn't show wallpaper, then execute in ADB shell:
 `pm enable com.android.systemui`. Effects are immediate.
+
+### Add Stock Packages to `app`
+
+We will do this using the same procedure as we did for `priv-app`.
+
+First, copy the files to a temporary folder on your device.
+
+```
+adb shell mkdir /sdcard/temp-app
+adb push app/* /sdcard/temp-app
+```
+
+Now, log in to the device, and get _Super User_ privileges.
+
+```
+adb shell
+su
+```
+
+Then, you can move the folders into final location, and remove the temporary copy.
+
+
+```
+cp -r /sdcard/temp-app/* /system/app/
+rm -rf /sdcard/temp-app
+```
+
+While still in the ADB shell with elevated priveleges, change attributes of the folders
+and files you copied.
+
+```
+chmod 755 /system/app/Browser
+chmod 644 /system/app/Browser/*
+
+chmod 755 /system/app/BrowserProviderProxy
+chmod 644 /system/app/BrowserProviderProxy/*
+
+chmod 755 /system/app/Calculator
+chmod 644 /system/app/Calculator/*
+
+chmod 755 /system/app/Calendar
+chmod 644 /system/app/Calendar/*
+
+chmod 755 /system/app/ConfigUpdater
+chmod 644 /system/app/ConfigUpdater/*
+
+chmod 755 /system/app/DeskClock
+chmod 644 /system/app/DeskClock/*
+
+chmod 755 /system/app/DocumentsUI
+chmod 644 /system/app/DocumentsUI/*
+
+chmod 755 /system/app/DownloadProviderUi
+chmod 644 /system/app/DownloadProviderUi/*
+
+chmod 755 /system/app/Exchange2
+chmod 644 /system/app/Exchange2/*
+
+chmod 755 /system/app/MediaShortcuts
+chmod 644 /system/app/MediaShortcuts/*
+
+chmod 755 /system/app/MusicLocal
+chmod 644 /system/app/MusicLocal/*
+
+chmod 755 /system/app/PartnerBookmarksProvider
+chmod 644 /system/app/PartnerBookmarksProvider/*
+
+chmod 755 /system/app/RkExplorer
+chmod 644 /system/app/RkExplorer/*
+
+chmod 755 /system/app/SoundRecorder
+chmod 644 /system/app/SoundRecorder/*
+```
+
+Finally, make the device restart and install the new packages by typing `reboot`.
+
+After reboot, you should see new apps in the menu: _Calculator_, _Calendar_, _Music_, _File Explorer_.
+
+Since you've installed `com.android.providers.downloads.ui`, `com.android.documentsui`
+and `com.android.browser.provider`, you should now be able to save
+files locally in various applications, ie. music and videos, and play them later
+even if there is no wifi connection.
 
 ## Install Lucid Browser
 
@@ -202,18 +283,57 @@ need rooting on _Tigerbox_, it just gives you full access).
 We haven't heared any reports of successful _TWRP_ installations on _Tigerbox_.
 You can be the first.
 
-## Starting software via adb
+## Starting software via ADB
 
-First get a list of your available packages, then run it (replace `<PACKAGENAME>`)
+In case you accidentally revert to original launcher, or for various other
+reasons, you may sometimes want to start an app without using the screen.
+
+To start an app, first get a list of your available packages, then run it
+ (replace `<PACKAGENAME>`)
 
 ```
 adb shell pm list packages
 adb shell monkey -p '<PACKAGENAME>' -v 500
 ```
 
+## Finding issues with installation of system packages
+
+If you want to add even more system-maintained packages, or for some reason there is
+an issue with adding the ones from [Supplemental Android improvements](#supplemental-android-improvements)
+chapter, you may want to look at logs which may shed light on what is wrong.
+
+If you are installing a package which doesn't add icon to the Launcher (ie. it's a
+Provider package), and you want to make sure it got installed, you should check:
+
+
+```
+adb shell dumpsys package
+```
+
+If the name of your package appears anywhere above `Package warning messages:`
+in that log, then it was successfully installed and it provides some functionality.
+
+And if it only appears in the `Package warning messages:`, then the warning might
+tell you what exactly is a problem with installation.
+
+## Finding issues with crashing app
+
+If any app or service is crashing, the information shown in GUI is not very
+informative, and often deceptive (ie. it often says _Android Core_ crashed,
+even though the issue is with specific application, not with the _Android Core_.
+
+To get more descriptive error message, run:
+
+```
+adb shell logcat
+```
+
+After the crash happens, break the command (ctrl+c), and look at the messages
+finding errors.
+
 ## Use scrcpy as remote control
 
-[scrcpy](https://github.com/Genymobile/scrcpy) makes remote controlling the
+The tool [scrcpy](https://github.com/Genymobile/scrcpy) makes remote controlling the
 device very convient. Just connect your device via ADB and start _scrcpy_.
 
 ## Working Software
