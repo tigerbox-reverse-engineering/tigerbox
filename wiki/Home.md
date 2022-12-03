@@ -20,7 +20,9 @@ What are the general steps we have to take? You probably already have that in yo
 
 # Unlocking in more detail
 
-Now we can think about detais of each point in the plan.
+Now we can think about detais of each point in the plan. Knowing as much as
+possible about [[the hardware we're working on|Hardware Overview]] becomes
+important at this point.
 
 ## Enable a way of sideloading and installing apps
 
