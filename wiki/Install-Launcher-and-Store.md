@@ -1,7 +1,6 @@
 # Preparation
 
-Please use the [UART-ADB UART tutorial](https://github.com/tigerbox-reverse-engineering/tigerbox/wiki/UART-ADB-Root)
-to gain ADB access.
+Please use the [[UART-ADB root tutorial|UART ADB Root]] to gain ADB access.
 
 # Make Android GUI useable
 
