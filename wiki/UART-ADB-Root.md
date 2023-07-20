@@ -103,3 +103,5 @@ persist.service.debuggable=1
 ```
 
 and change `persist.sys.usb.config=charging` to `persist.sys.usb.config=mtp,adb` 
+
+then `sudo umount /mount/patch/` and `adb push /patch/to/file/mmcblk0p12 /dev/block/mmcblk0p12` and `adb reboot`
