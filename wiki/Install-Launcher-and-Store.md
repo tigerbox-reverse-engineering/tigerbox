@@ -57,7 +57,7 @@ And what you have, you can check in _Settings_ -> _Device info_.
 If your Android is 5.1.1, and chip is rk312x, then you should be able to use the
 already extracted packages:
 
-* selection from Colortab Premium image `rk3126-colortabpremium-gsl1680-RTL8188-stock`:
+* selection from images of some RK312x Tablets:
   [Download from Mega]([https://mega.nz/file/dQFjGaIB#WPTTsyNK61UGiEeVrQoxYADfTvKFf8QySk2pZC6s-C4](https://mega.nz/file/S3B3iJAB#AzEKVNInkoZ3dvBPcdakYnN2Rh35uccJ4TCe-2GGJ4A))
 
 The APK files could be installed by `adb install --user 0 <FILENAME>`, but you would
