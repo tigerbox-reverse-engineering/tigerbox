@@ -1,6 +1,7 @@
 name: Generate wiki from code
 
 on:
+  workflow_dispatch:
   push:
     branches: 
       - master
