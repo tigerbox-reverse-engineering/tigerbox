@@ -57,8 +57,8 @@ And what you have, you can check in _Settings_ -> _Device info_.
 If your Android is 5.1.1, and chip is rk312x, then you should be able to use the
 already extracted packages:
 
-* selection from Colortab Premium image `rk3126-colortabpremium-gsl1680-RTL8188-stock`:
-  [Download from Mega](https://mega.nz/file/dQFjGaIB#WPTTsyNK61UGiEeVrQoxYADfTvKFf8QySk2pZC6s-C4)
+* selection from images of some RK312x Tablets:
+  [Download from Mega] https://mega.nz/file/S3B3iJAB#AzEKVNInkoZ3dvBPcdakYnN2Rh35uccJ4TCe-2GGJ4A
 
 The APK files could be installed by `adb install --user 0 <FILENAME>`, but you would
 notice that some files are refusing to install unless modded, and in general -
@@ -100,11 +100,14 @@ is very strict about attributes, and will ignore the packages which do not match
 chmod 755 /system/priv-app/CalendarProvider
 chmod 644 /system/priv-app/CalendarProvider/*
 
+chmod 755 /system/priv-app/Contacts
+chmod 644 /system/priv-app/Contacts/*
+
+chmod 755 /system/priv-app/ContactsProvider
+chmod 755 /system/priv-app/ContactsProvider/*
+
 chmod 755 /system/priv-app/DownloadProvider
 chmod 644 /system/priv-app/DownloadProvider/*
-
-chmod 755 /system/priv-app/Launcher2
-chmod 644 /system/priv-app/Launcher2/*
 
 chmod 755 /system/priv-app/MusicFX
 chmod 644 /system/priv-app/MusicFX/*
@@ -183,6 +186,9 @@ chmod 644 /system/app/DownloadProviderUi/*
 chmod 755 /system/app/Exchange2
 chmod 644 /system/app/Exchange2/*
 
+chmod 755 /system/app/Launcher3
+chmod 644 /system/app/Launcher3/*
+
 chmod 755 /system/app/MediaShortcuts
 chmod 644 /system/app/MediaShortcuts/*
 
@@ -191,6 +197,9 @@ chmod 644 /system/app/MusicLocal/*
 
 chmod 755 /system/app/PartnerBookmarksProvider
 chmod 644 /system/app/PartnerBookmarksProvider/*
+
+chmod 755 /system/app/RkApkInstaller
+chmod 644 /system/app/RkApkInstaller/*
 
 chmod 755 /system/app/RkExplorer
 chmod 644 /system/app/RkExplorer/*
