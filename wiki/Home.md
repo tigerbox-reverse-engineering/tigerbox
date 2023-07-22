@@ -31,12 +31,7 @@ The ADB can use USB or Wi-fi network to talk to the target device from any PC.
 But both these ways of communication are normally disabled on Tigerbox - we
 need to enable at least one of them.
 
-While it is definitely possible to hack your way into the Tigerbox without
-opening it, as of now noone bothered to create such automated solution.
-It is a nieche product after all.
-
-So unless you are able to develop such solution yourself, you'll have to use
-your screwdriver and soldering station:
+You can use the method without opening the box, then you need to Go directly to adb UART adb root, or you use the method in which you need to open the box.
 
 * [[Open the tigerbox|Open the tigerbox]]
 
