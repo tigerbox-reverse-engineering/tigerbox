@@ -261,20 +261,57 @@ android.content.ActivityNotFoundException: No activity found to handle Intent { 
 then the issue is just that - lack of handlers. For what action the handler is missing,
 that is explained within curly braces of the message above.
 
-## Missing Google services
+## Installing Play Store and microG
 
-The Google services are not very usable without the _Google Play Store_. And to
-make _Google Play Store_ work, you need _signature spoofing_ support on your
-Android system.
+Currently there is a way to install microG in this device, but Play Store isn´t working correctly. It´s opening, but sometimes it shows an Server Error.
+To install the Services and Play Store, follow this instructions:
+Download the GApps and microG package on Mega: [Click Here](https://mega.nz/file/muRX1ZZZ#ylsy6O2hNlcelcBXyGz3JzPjI0wbWNcV6ukmUBcXkuM)
+After Downloading the File, unpack it and open a Terminal in the unpacked Directory. 
+Then type: 
+```
+adb shell mkdir /sdcard/temp-priv-app
+adb push priv-app/* /sdcard/temp-priv-app
+```
+After doing this, the GApps are on the box. Now you need get _Root_: 
 
-Manually adding _signature spoofing_ is complicated. There are tools which allow
-to do that easily - but these are installed within [custom recovery](#custom-recovery).
+```
+adb shell
+su
+```
+Type now the following lines line-by-line to set attributes:
+```
+chmod 755 /system/app/Phonesky
+chmod 644 /system/app/Phonesky/*
 
-In fact, if you make _custom recovery_ work, you can also install all the google
-services through _microG_ which is also installed from within _custom recovery_.
+chmod 755 /system/app/uNlp
+chmod 644 /system/app/uNlp/*
 
-This will give you access to _Google Maps_, _Gmail_, _Youtube_, and all the other
-services provided by Google and required by a lot of other Apps.
+chmod 755 /system/app/uNlp2
+chmod 644 /system/app/uNlp2/*
+
+chmod 755 /system/app/PlaySrv
+chmod 644 /system/app/PlaySrv/*
+
+chmod 755 /system/app/gsf
+chmod 644 /system/app/gsf/*
+```
+Then reboot the device by typing `reboot`.
+After booting you will get a message like `Google services framework stopped working`.
+Just click `OK`
+If the message reopens, click `OK`.
+Open now the Play Store, click `Log In` and Log In in your Google Account.
+After logging in, you will get a server error. Now you need your Computer.
+Type:
+```
+adb shell
+su
+rm -rf /system/priv-app/gsf
+reboot
+```
+The device reboots, and you should get a (hopefully) working Play Store
+ 
+
+
 
 ## Custom recovery
 
