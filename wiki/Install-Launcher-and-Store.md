@@ -264,51 +264,20 @@ that is explained within curly braces of the message above.
 ## Installing Play Store and microG
 
 Currently there is a way to install microG in this device, but Play Store isn´t working correctly. It´s opening, but sometimes it shows an Server Error.
-To install the Services and Play Store, follow this instructions:
-Download the GApps and microG package on Mega: [Click Here](https://mega.nz/file/muRX1ZZZ#ylsy6O2hNlcelcBXyGz3JzPjI0wbWNcV6ukmUBcXkuM)
-After Downloading the File, unpack it and open a Terminal in the unpacked Directory. 
-Then type: 
+After installing F-Droid, add https://microg.org/fdroid/repo to the package repositories of F-Droid.
+Run a Package-Source update and install the following apps:
 ```
-adb shell mkdir /sdcard/temp-priv-app
-adb push priv-app/* /sdcard/temp-priv-app
+unifiedNlp
+microG Service Core
 ```
-After doing this, the GApps are on the box. Now you need get _Root_: 
+after installation, reboot.
+Download APK from ApkMirror and install as system app
+(PlayStore)[https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-26-6-12-release/google-play-store-26-6-12-21-0-pr-389229320-2-android-apk-download/]
+Download APK and install as normal app
+(GSF)[https://www.apkmirror.com/apk/google-inc/google-services-framework/google-services-framework-5-1-1743759-release/google-services-framework-5-1-1743759-android-apk-download/]
 
-```
-adb shell
-su
-```
-Type now the following lines line-by-line to set attributes:
-```
-chmod 755 /system/app/Phonesky
-chmod 644 /system/app/Phonesky/*
-
-chmod 755 /system/app/uNlp
-chmod 644 /system/app/uNlp/*
-
-chmod 755 /system/app/uNlp2
-chmod 644 /system/app/uNlp2/*
-
-chmod 755 /system/app/PlaySrv
-chmod 644 /system/app/PlaySrv/*
-
-chmod 755 /system/app/gsf
-chmod 644 /system/app/gsf/*
-```
-Then reboot the device by typing `reboot`.
-After booting you will get a message like `Google services framework stopped working`.
-Just click `OK`
-If the message reopens, click `OK`.
-Open now the Play Store, click `Log In` and Log In in your Google Account.
-After logging in, you will get a server error. Now you need your Computer.
-Type:
-```
-adb shell
-su
-rm -rf /system/priv-app/gsf
-reboot
-```
-The device reboots, and you should get a (hopefully) working Play Store
+Now open the Play Store and log in.
+Then uninstall the google services framework and you'll get an working play store with microG.
  
 
 
