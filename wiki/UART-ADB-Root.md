@@ -92,7 +92,7 @@ May be possible with
 https://github.com/tintinweb/pub/tree/master/pocs/cve-2017-13208
 
 
-# via USB _Android Recovery_ without opening
+# via USB Android Recovery without opening
 
  ## Currently only works on Linux or Windows Subsystem for Linux 2 with adb installed.
 

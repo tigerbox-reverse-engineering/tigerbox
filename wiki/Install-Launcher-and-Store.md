@@ -261,20 +261,26 @@ android.content.ActivityNotFoundException: No activity found to handle Intent { 
 then the issue is just that - lack of handlers. For what action the handler is missing,
 that is explained within curly braces of the message above.
 
-## Missing Google services
+## Installing Play Store and microG
 
-The Google services are not very usable without the _Google Play Store_. And to
-make _Google Play Store_ work, you need _signature spoofing_ support on your
-Android system.
+Currently there is a way to install microG in this device, but Play Store isn´t working correctly. It´s opening, but sometimes it shows an Server Error.
+After installing F-Droid, add https://microg.org/fdroid/repo to the package repositories of F-Droid.
+Run a Package-Source update and install the following apps:
+```
+unifiedNlp
+microG Service Core
+```
+after installation, reboot.
+Download APK from ApkMirror and install as system app
+(PlayStore)[https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-26-6-12-release/google-play-store-26-6-12-21-0-pr-389229320-2-android-apk-download/]
+Download APK and install as normal app
+(GSF)[https://www.apkmirror.com/apk/google-inc/google-services-framework/google-services-framework-5-1-1743759-release/google-services-framework-5-1-1743759-android-apk-download/]
 
-Manually adding _signature spoofing_ is complicated. There are tools which allow
-to do that easily - but these are installed within [custom recovery](#custom-recovery).
+Now open the Play Store and log in.
+Then uninstall the google services framework and you'll get an working play store with microG.
+ 
 
-In fact, if you make _custom recovery_ work, you can also install all the google
-services through _microG_ which is also installed from within _custom recovery_.
 
-This will give you access to _Google Maps_, _Gmail_, _Youtube_, and all the other
-services provided by Google and required by a lot of other Apps.
 
 ## Custom recovery
 
