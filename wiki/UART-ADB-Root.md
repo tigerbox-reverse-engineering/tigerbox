@@ -96,7 +96,7 @@ https://github.com/tintinweb/pub/tree/master/pocs/cve-2017-13208
 
  ## Currently only works on Linux or Windows Subsystem for Linux 2 with adb installed.
 
-Use a Paperclip to press it in the RESET hole right from the USB Connector. While doing this press the on/off button to boot in Android Recovery. Use `adb pull /dev/block/mmcblk0p12 /patch/to/file`. And mount over `sudo mount -t ext4 /patch/to/file/mmcblk0p12 /mount/patch/` `nano /mount/patch/build.prop` and add
+Use a Paperclip to press it in the RESET hole right from the USB Connector. While doing this press the on/off button to boot in Android Recovery. Use `adb root` and `adb pull /dev/block/mmcblk0p12 /patch/to/file`. And mount over `sudo mount -t ext4 /patch/to/file/mmcblk0p12 /mount/patch/` `nano /mount/patch/build.prop` and add
 ```
 persist.service.adb.enable=1
 persist.service.debuggable=1  
